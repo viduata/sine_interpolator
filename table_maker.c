@@ -6,6 +6,11 @@
 // This program outputs a sine table at one-degree intervals
 // The values are scaled to fit almost full-scale in the 16-bit space
 // to accomodate a signed 16-bit output over i2s to an audio codec
+//
+// At the current time, it is implemented such that you run it and
+// copy/paste the output code into sine_table.h
+//
+// Future versions will automatically create sine_table.h
 
 int main (int argc, char * arg[])
 {

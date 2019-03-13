@@ -2,7 +2,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
-#include "sine_table.h"
+
+#include "interpolation.h"
 
 
 // sine lookups come from the sine_table.h file
@@ -10,7 +11,7 @@
 
 
 // FUNCTION PROTOTYPES
-float get_interpolated_value(float input);
+
 
 
 int main (int argc, char * arg[])
@@ -39,25 +40,10 @@ int main (int argc, char * arg[])
 
 	for (x=0; x<samples; x++)
 	{
-		printf("%f, %f\r\n", x, get_interpolated_value(x*interval));
+		printf("%f, %f\r\n", x, sine_interpolator(x*interval));
 	}
 
-
-
-	// for (x=0; x<720; x+=3.625)
-	// {
-	// 	printf("%f, %f\r\n", x, get_interpolated_value(x));
-	// }
 	return 0;
 }
 
 
-float get_interpolated_value(float input)
-{
-	int left = floor(input);
-	left = left % 360;
-
-	input = fmod(input, 360);
-
-	return (input*sine_table[(left+1)%360] - input*sine_table[left] + sine_table[left]*(left+1) - (left*sine_table[(left+1)%360]));
-}
