@@ -22,9 +22,23 @@ float sine_interpolator(float input)
 ///////////////////////////////////////////////////////////////////////////////
 // saw_generator()
 // 
+// generates a rising sawtooth between 32767 and -32767
 float saw_generator(float input)
 {
-	return 1;
+	float saw_input = fmod(input, 360);
+	
+	return 32767*(saw_input/360) - 32767;
+}
+
+///////////////////////////////////////////////////////////////////////////////
+// reverse_saw_generator()
+// 
+// generates a falling sawtooth between 32767 and -32767
+float reverse_saw_generator(float input)
+{
+	float saw_input = fmod(input, 360);
+	
+	return 32767 - 32767*(saw_input/360);
 }
 
 
