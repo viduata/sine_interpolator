@@ -54,6 +54,7 @@ int main (int argc, char * arg[])
 		fwrite(&intvalue,sizeof(int16_t), 1, fh);
 		wave_position += interval;
 
+		// value = sine_interpolator(wave_position); // gives a sine wave
 		// printf("%f, %f\r\n", x, saw_generator(x*interval)); // gives a square wave
 		// printf("%f, %f\r\n", x, triangle_generator(x*interval)); // gives a triangle wave
 	}

@@ -9,6 +9,7 @@ float reverse_saw_generator(float input);
 float square_generator(float input);
 float triangle_generator(float input);
 
+float unit_triangle(float input);
 
 
 #endif

@@ -4,6 +4,7 @@
 
 const float saw_factor = 65534/360;
 const float tri_factor = 65534/180;
+const float unit_tri_factor = 1/180;
 
 ///////////////////////////////////////////////////////////////////////////////
 // sine_interpolator()
@@ -67,7 +68,32 @@ float triangle_generator(float input)
 // generates a square wave between 32767 and -32767
 float square_generator(float input)
 {
-	return 1;
+	float tri_input = fmod(input, 360);
+	if(tri_input<180)
+	{
+		return - 32767;
+	}
+	else
+	{
+		return 32767;
+	}
 }
 
+
+///////////////////////////////////////////////////////////////////////////////
+// unit_triangle()
+// 
+// generates a positive triangle wave from 0 to 1 and back
+float unit_triangle(float input)
+{
+	float tri_input = fmod(input, 360);
+	if(tri_input<180)
+	{
+		return (unit_tri_factor * tri_input);
+	}
+	else
+	{
+		return 1 - (unit_tri_factor * (tri_input-180)) ;
+	}
+}
 
