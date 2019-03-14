@@ -31,7 +31,6 @@ float saw_generator(float input)
 	float saw_input = fmod(input, 360);
 	
 	return saw_factor*saw_input - 32767;
-	// return 32767*(saw_input/360) - 32767;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -43,23 +42,32 @@ float reverse_saw_generator(float input)
 	float saw_input = fmod(input, 360);
 	
 	return 32767 - saw_factor*saw_input;
-	// return 32767 - 32767*(saw_input/360);
 }
 
+///////////////////////////////////////////////////////////////////////////////
+// triangle_generator()
+// 
+// generates a fast sawtooth between 32767 and -32767
+float triangle_generator(float input)
+{
+	float tri_input = fmod(input, 360);
+	if(tri_input<180)
+	{
+		return (tri_factor * tri_input) - 32767;
+	}
+	else
+	{
+		return 32767 - (tri_factor * (tri_input-180)) ;
+	}
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 // square_generator()
 // 
+// generates a square wave between 32767 and -32767
 float square_generator(float input)
 {
 	return 1;
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-// triangle_generator()
-// 
-float triangle_generator(float input)
-{
-	return 1;
-}

@@ -41,7 +41,8 @@ int main (int argc, char * arg[])
 	for (x=0; x<samples; x++)
 	{
 		// printf("%f, %f\r\n", x, sine_interpolator(x*interval)); // gives a sine wave
-		printf("%f, %f\r\n", x, saw_generator(x*interval)); // gives a square wave
+		// printf("%f, %f\r\n", x, saw_generator(x*interval)); // gives a square wave
+		printf("%f, %f\r\n", x, triangle_generator(x*interval)); // gives a triangle wave
 
 	}
 
