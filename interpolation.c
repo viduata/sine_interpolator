@@ -2,6 +2,8 @@
 #include "sine_table.h"
 #include <math.h>
 
+const float saw_factor = 65534/360;
+const float tri_factor = 65534/180;
 
 ///////////////////////////////////////////////////////////////////////////////
 // sine_interpolator()
@@ -25,9 +27,11 @@ float sine_interpolator(float input)
 // generates a rising sawtooth between 32767 and -32767
 float saw_generator(float input)
 {
+
 	float saw_input = fmod(input, 360);
 	
-	return 32767*(saw_input/360) - 32767;
+	return saw_factor*saw_input - 32767;
+	// return 32767*(saw_input/360) - 32767;
 }
 
 ///////////////////////////////////////////////////////////////////////////////
@@ -38,7 +42,8 @@ float reverse_saw_generator(float input)
 {
 	float saw_input = fmod(input, 360);
 	
-	return 32767 - 32767*(saw_input/360);
+	return 32767 - saw_factor*saw_input;
+	// return 32767 - 32767*(saw_input/360);
 }
 
 
