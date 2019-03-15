@@ -28,7 +28,7 @@ int main (int argc, char * arg[])
 	float 	root_frequency = 440;
 	float 	mod_frequency  = 440;
 	float 	lfo_frequency  = 5;
-	float 	lfo_depth      = 150;
+	float 	lfo_depth      = 50;
 	int 	intvalue       = 0;
 	float 	value          = 0;
 	long    x			   = 0;
@@ -45,6 +45,7 @@ int main (int argc, char * arg[])
 	for (x=0; x<samples; x++)
 	{
 		value = triangle_generator(principle_wave.position) + saw_generator(secondary_wave.position);
+		value = value/2;
 		intvalue = (int16_t)value;
 		principle_wave.frequency = root_frequency + (unit_sine(lf_modulator.position)*lfo_depth);
 		wave_recalculate(&principle_wave); // required if a value is modified
