@@ -97,3 +97,25 @@ float unit_triangle(float input)
 	}
 }
 
+
+
+///////////////////////////////////////////////////////////////////////////////
+// unit_sine()
+// Given a value (in degrees), this uses a pre-baked table of sine values
+// to give an approximation of sine.
+// The method used is a simple first-order linear approximation
+//
+// This method is used particularly for dealing with LFOs and other
+// multiplicative values
+float unit_sine(float input)
+{
+	int left = floor(input);
+	left = left % 360;
+
+	input = fmod(input, 360);
+
+	return (input*sine_unit_table[(left+1)%360] - 
+			input*sine_unit_table[left] + 
+			sine_unit_table[left]*(left+1) - 
+			(left*sine_unit_table[(left+1)%360]));
+}

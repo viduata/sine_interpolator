@@ -16,7 +16,17 @@ int main (int argc, char * arg[])
 {
 	int x;
 	float rads;
-	float multiplier=32767;
+	// float multiplier=32767;
+	// float multiplier=1;
+	float multiplier = 1;
+
+	if(argc!=2)
+	{
+		printf("Usage:%s <amplitude>\r\n", arg[0]);
+		exit(1);
+	}
+
+	multiplier = atof(arg[1]);
 
 	printf("float sine_table[] = {");
 	for (x = 0; x<360; x++)

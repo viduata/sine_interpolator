@@ -10,6 +10,7 @@ float square_generator(float input);
 float triangle_generator(float input);
 
 float unit_triangle(float input);
+float unit_sine(float input);
 
 
 #endif
